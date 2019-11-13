@@ -9,8 +9,8 @@ const App = () => {
   const [headingCharArr, setHeadingCharArr] = useState([]);
   const [paraCharArr, setParaCharArr] = useState([]);
 
-  const max = 750;
-  const min = 250;
+  const max = 400;
+  const min = 100;
 
   const randomTimeTotalRef = useRef();
   randomTimeTotalRef.current = 0;
