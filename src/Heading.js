@@ -2,12 +2,11 @@ import React from 'react';
 
 const Heading = props => {
   const { charArr } = props;
-  console.log('charArr', charArr);
 
   return (
     <h1>
       {charArr.map(char => (
-        <span key={char} style={{ color: char.color }}>
+        <span key={char.key} style={{ color: char.color }}>
           {char.char}
         </span>
       ))}

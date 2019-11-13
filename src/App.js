@@ -1,43 +1,41 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Heading from './Heading';
 import './App.css';
-import chars from './chars.json';
+import headingChars from './heading.json';
 
 const App = () => {
-  const [charArr, setCharArr] = useState([]);
-  const max = 1500;
-  const min = 500;
+  const [headingCharArr, setHeadingCharArr] = useState([]);
+  const max = 750;
+  const min = 250;
 
-  let randomTimeTotal = 0;
   const randomTimeTotalRef = useRef();
-  randomTimeTotalRef.current = randomTimeTotal;
+  randomTimeTotalRef.current = 0;
 
-  const renderSpan = useCallback(char => {
+  const renderHeadingSpan = useCallback(char => {
     const randomTime = Math.floor(Math.random() * (max - min)) + min;
     randomTimeTotalRef.current += randomTime;
     setTimeout(() => {
-      console.log('charArr before', charArr);
-      console.log('...charArr', ...charArr);
-      setCharArr(charArr => [...charArr, char]);
-      console.log('charArr', charArr);
+      setHeadingCharArr(headingCharArr => [...headingCharArr, char]);
     }, randomTimeTotalRef.current);
   }, []);
 
-  const renderChars = useCallback((chars, i) => {
-    if (i >= chars.length) return;
-    i = i || 0;
-    renderSpan(chars[i]);
-    i++;
-    renderChars(chars, i);
-  }, []);
+  const renderHeadingChars = useCallback(
+    chars => {
+      chars.forEach((char, i) => {
+        char.key = i;
+        renderHeadingSpan(char);
+      });
+    },
+    [renderHeadingSpan]
+  );
 
   useEffect(() => {
-    renderChars(chars);
-  }, []);
+    renderHeadingChars(headingChars);
+  }, [renderHeadingChars]);
 
   return (
     <div className="App">
-      <Heading charArr={charArr} />
+      <Heading charArr={headingCharArr} />
     </div>
   );
 };
