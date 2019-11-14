@@ -1,17 +1,18 @@
 import React from 'react';
+import './style.css';
 
-const Heading = props => {
+const Paragraph = props => {
   const { charArr } = props;
 
   return (
-    <h1>
+    <p className="what">
       {charArr.map(char => (
         <span key={char.key} style={{ color: char.color }}>
           {char.char}
         </span>
       ))}
-    </h1>
+    </p>
   );
 };
 
-export default Heading;
+export default Paragraph;
