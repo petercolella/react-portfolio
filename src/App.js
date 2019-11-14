@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import Heading from './Heading';
-import Paragraph from './Paragraph';
-import headingChars from './heading.json';
-import paragraphChars from './paragraph.json';
+
+import Heading from './components/Heading';
+import Paragraph from './components/Paragraph';
+
+import headingChars from './data/heading.json';
+import paragraphChars from './data/paragraph.json';
+
 import './App.css';
 
 const App = () => {
@@ -52,8 +55,10 @@ const App = () => {
   );
 
   useEffect(() => {
-    renderHeadingChars(headingChars);
-    renderParaChars(paragraphChars);
+    setTimeout(() => {
+      renderHeadingChars(headingChars);
+      renderParaChars(paragraphChars);
+    }, 1000);
   }, [renderHeadingChars, renderParaChars]);
 
   return (
