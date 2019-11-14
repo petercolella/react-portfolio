@@ -1,0 +1,14 @@
+.contact {
+  background-color: #fd971f;
+  margin: 0 auto;
+  border-radius: 0;
+  height: 0;
+  width: 3px;
+  transition: height 2s linear, width 2s linear 2s, border-radius 2s linear 4s;
+}
+
+.contact.show {
+  border-radius: 10px;
+  height: 50px;
+  width: 300px;
+}
