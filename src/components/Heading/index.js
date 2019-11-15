@@ -5,7 +5,7 @@ const Heading = props => {
   const { charArr } = props;
 
   return (
-    <h1 className="who">
+    <h1 id="who">
       {charArr.map(char => (
         <span key={char.key} style={{ color: char.color }}>
           {char.char}

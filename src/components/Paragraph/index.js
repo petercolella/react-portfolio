@@ -5,7 +5,7 @@ const Paragraph = props => {
   const { charArr } = props;
 
   return (
-    <p className="what">
+    <p id="what">
       {charArr.map(char => (
         <span key={char.key} style={{ color: char.color }}>
           {char.char}
