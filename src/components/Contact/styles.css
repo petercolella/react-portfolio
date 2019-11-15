@@ -35,15 +35,15 @@
 }
 
 .svg#github {
-  transition: height 1s linear 4s, width 1s linear 5s;
+  transition: height 0.25s linear 4s, width 0.25s linear 5s;
 }
 
 .svg#gmail {
-  transition: height 1s linear 4.25s, width 1s linear 5.25s;
+  transition: height 0.25s linear 4.25s, width 0.25s linear 5.25s;
 }
 
 .svg#linkedin {
-  transition: height 1s linear 4.5s, width 1s linear 5.5s;
+  transition: height 0.25s linear 4.5s, width 0.25s linear 5.5s;
 }
 
 .svg.grow {

@@ -99,7 +99,7 @@ const App = () => {
   );
 
   const renderContact = useCallback(() => {
-    randomTimeTotalRef.current += 500;
+    randomTimeTotalRef.current += 250;
     setTimeout(() => {
       setShow(true);
     }, randomTimeTotalRef.current);
