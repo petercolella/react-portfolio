@@ -4,15 +4,38 @@
 
 .contact {
   background-color: #fd971f;
-  margin: 0 auto;
   border-radius: 0;
+  display: flex;
   height: 0;
+  margin: 0 auto;
+  padding: 0;
   width: 3px;
-  transition: height 2s linear, width 2s linear 2s, border-radius 2s linear 4s;
+  transition: height 2s linear, padding-top 2s linear, padding-bottom 2s linear,
+    width 2s linear 2s, padding-left 2s linear 2s, padding-right 2s linear 2s,
+    border-radius 1s linear 4s;
 }
 
 .contact.show {
   border-radius: 10px;
   height: 50px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
   width: 300px;
+}
+
+.svg {
+  height: 0;
+  width: 0;
+  transition: height 1s linear 4s, width 1s linear 5s;
+}
+
+.svg.grow {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  width: 33.33%;
 }
