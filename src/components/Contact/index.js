@@ -18,19 +18,19 @@ const Contact = props => {
           href="https://github.com/petercolella"
           target="_blank"
           rel="noopener noreferrer">
-          <GitHub className={!show ? 'svg' : 'svg grow'} />
+          <GitHub className={!show ? 'svg' : 'svg grow'} id="github" />
         </a>
         <a
           href="mailto:colella.peter.j@gmail.com"
           target="_blank"
           rel="noopener noreferrer">
-          <Gmail className={!show ? 'svg' : 'svg grow'} />
+          <Gmail className={!show ? 'svg' : 'svg grow'} id="gmail" />
         </a>
         <a
           href="https://www.linkedin.com/in/peter-colella/"
           target="_blank"
           rel="noopener noreferrer">
-          <LinkedIn className={!show ? 'svg' : 'svg grow'} />
+          <LinkedIn className={!show ? 'svg' : 'svg grow'} id="linkedin" />
         </a>
       </div>
       {closingCharArr.map(char => (
