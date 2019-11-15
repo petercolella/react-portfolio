@@ -1,0 +1,26 @@
+[
+  {
+    "char": "<",
+    "color": "#e3e3dd"
+  },
+  {
+    "char": "/",
+    "color": "#e3e3dd"
+  },
+  {
+    "char": "d",
+    "color": "#c4265e"
+  },
+  {
+    "char": "i",
+    "color": "#c4265e"
+  },
+  {
+    "char": "v",
+    "color": "#c4265e"
+  },
+  {
+    "char": ">",
+    "color": "#e3e3dd"
+  }
+]
