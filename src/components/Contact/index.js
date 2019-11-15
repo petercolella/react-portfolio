@@ -7,7 +7,7 @@ import './styles.css';
 const Contact = props => {
   const { charArr, closingCharArr, show } = props;
   return (
-    <div id="where">
+    <div id="contact">
       {charArr.map(char => (
         <span key={char.key} style={{ color: char.color }}>
           {char.char}
