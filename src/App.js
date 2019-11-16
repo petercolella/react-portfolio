@@ -20,7 +20,7 @@ const randomTime = () => {
 
 const App = () => {
   const [headingCharArr, setHeadingCharArr] = useState([]);
-  const [paraCharArr, setParaCharArr] = useState([]);
+  const [paragraphCharArr, setParagraphCharArr] = useState([]);
   const [divCharArr, setDivCharArr] = useState([]);
   const [closingDivCharArr, setClosingDivCharArr] = useState([]);
   const [show, setShow] = useState(false);
@@ -28,34 +28,14 @@ const App = () => {
   const randomTimeTotalRef = useRef();
   randomTimeTotalRef.current = 0;
 
-  const parseChars = useCallback((chars, cb) => {
+  const renderChars = useCallback((chars, setArr) => {
     chars.forEach((char, i) => {
       char.key = i;
-      cb(char);
+      const timeout = (randomTimeTotalRef.current += randomTime());
+      setTimeout(() => {
+        setArr(arr => [...arr, char]);
+      }, timeout);
     });
-  }, []);
-
-  const addCharsToState = (char, setArr) => {
-    const timeout = (randomTimeTotalRef.current += randomTime());
-    setTimeout(() => {
-      setArr(arr => [...arr, char]);
-    }, timeout);
-  };
-
-  const renderHeadingSpan = useCallback(char => {
-    addCharsToState(char, setHeadingCharArr);
-  }, []);
-
-  const renderParaSpan = useCallback(char => {
-    addCharsToState(char, setParaCharArr);
-  }, []);
-
-  const renderDivSpan = useCallback(char => {
-    addCharsToState(char, setDivCharArr);
-  }, []);
-
-  const renderClosingDivSpan = useCallback(char => {
-    addCharsToState(char, setClosingDivCharArr);
   }, []);
 
   const renderContact = useCallback(() => {
@@ -66,25 +46,18 @@ const App = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      parseChars(headingChars, renderHeadingSpan);
-      parseChars(paragraphChars, renderParaSpan);
-      parseChars(divChars, renderDivSpan);
-      parseChars(closingDivChars, renderClosingDivSpan);
+      renderChars(headingChars, setHeadingCharArr);
+      renderChars(paragraphChars, setParagraphCharArr);
+      renderChars(divChars, setDivCharArr);
+      renderChars(closingDivChars, setClosingDivCharArr);
       renderContact();
     }, 1000);
-  }, [
-    parseChars,
-    renderHeadingSpan,
-    renderParaSpan,
-    renderDivSpan,
-    renderClosingDivSpan,
-    renderContact
-  ]);
+  }, [renderChars, renderContact]);
 
   return (
     <div className="App">
       <Heading charArr={headingCharArr} />
-      <Paragraph charArr={paraCharArr} />
+      <Paragraph charArr={paragraphCharArr} />
       <Contact
         charArr={divCharArr}
         closingCharArr={closingDivCharArr}
