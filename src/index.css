@@ -3,8 +3,7 @@ body {
   height: 100vh;
   line-height: 1.5;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Menlo, Monaco, 'Courier New',
-    monospace, sans-serif;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
