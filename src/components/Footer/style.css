@@ -1,0 +1,12 @@
+.footer {
+  bottom: 0;
+  height: 0;
+  background-color: #414339;
+  position: absolute;
+  width: 100%;
+  transition: height 1s linear;
+}
+
+.show {
+  height: 4em;
+}

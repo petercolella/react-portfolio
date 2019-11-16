@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Heading from './components/Heading';
 import Paragraph from './components/Paragraph';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 import headingChars from './data/heading.json';
 import paragraphChars from './data/paragraph.json';
@@ -24,6 +25,7 @@ const App = () => {
   const [divCharArr, setDivCharArr] = useState([]);
   const [closingDivCharArr, setClosingDivCharArr] = useState([]);
   const [show, setShow] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
 
   const randomTimeTotalRef = useRef();
   randomTimeTotalRef.current = 0;
@@ -44,6 +46,12 @@ const App = () => {
     }, (randomTimeTotalRef.current += 250));
   }, []);
 
+  const renderFooter = useCallback(() => {
+    setTimeout(() => {
+      setShowFooter(true);
+    }, (randomTimeTotalRef.current += 6000));
+  }, []);
+
   useEffect(() => {
     setTimeout(() => {
       renderChars(headingChars, setHeadingCharArr);
@@ -51,8 +59,9 @@ const App = () => {
       renderChars(divChars, setDivCharArr);
       renderChars(closingDivChars, setClosingDivCharArr);
       renderContact();
+      renderFooter();
     }, 1000);
-  }, [renderChars, renderContact]);
+  }, [renderChars, renderContact, renderFooter]);
 
   return (
     <div className="App">
@@ -63,6 +72,7 @@ const App = () => {
         closingCharArr={closingDivCharArr}
         show={show}
       />
+      <Footer show={showFooter} />
     </div>
   );
 };
