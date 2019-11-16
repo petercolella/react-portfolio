@@ -35,30 +35,27 @@ const App = () => {
     });
   }, []);
 
-  const addCharsToState = (char, arr, setArr, timeout) => {
+  const addCharsToState = (char, setArr) => {
+    const timeout = (randomTimeTotalRef.current += randomTime());
     setTimeout(() => {
       setArr(arr => [...arr, char]);
     }, timeout);
   };
 
-  const renderHeadingSpan = useCallback((char, headingCharArr) => {
-    const timeout = (randomTimeTotalRef.current += randomTime());
-    addCharsToState(char, headingCharArr, setHeadingCharArr, timeout);
+  const renderHeadingSpan = useCallback(char => {
+    addCharsToState(char, setHeadingCharArr);
   }, []);
 
-  const renderParaSpan = useCallback((char, paraCharArr) => {
-    const timeout = (randomTimeTotalRef.current += randomTime());
-    addCharsToState(char, paraCharArr, setParaCharArr, timeout);
+  const renderParaSpan = useCallback(char => {
+    addCharsToState(char, setParaCharArr);
   }, []);
 
-  const renderDivSpan = useCallback((char, divCharArr) => {
-    const timeout = (randomTimeTotalRef.current += randomTime());
-    addCharsToState(char, divCharArr, setDivCharArr, timeout);
+  const renderDivSpan = useCallback(char => {
+    addCharsToState(char, setDivCharArr);
   }, []);
 
-  const renderClosingDivSpan = useCallback((char, closingDivCharArr) => {
-    const timeout = (randomTimeTotalRef.current += randomTime());
-    addCharsToState(char, closingDivCharArr, setClosingDivCharArr, timeout);
+  const renderClosingDivSpan = useCallback(char => {
+    addCharsToState(char, setClosingDivCharArr);
   }, []);
 
   const renderContact = useCallback(() => {
