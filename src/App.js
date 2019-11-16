@@ -36,38 +36,33 @@ const App = () => {
   }, []);
 
   const renderHeadingSpan = useCallback(char => {
-    randomTimeTotalRef.current += randomTime();
     setTimeout(() => {
       setHeadingCharArr(headingCharArr => [...headingCharArr, char]);
-    }, randomTimeTotalRef.current);
+    }, (randomTimeTotalRef.current += randomTime()));
   }, []);
 
   const renderParaSpan = useCallback(char => {
-    randomTimeTotalRef.current += randomTime();
     setTimeout(() => {
       setParaCharArr(paraCharArr => [...paraCharArr, char]);
-    }, randomTimeTotalRef.current);
+    }, (randomTimeTotalRef.current += randomTime()));
   }, []);
 
   const renderDivSpan = useCallback(char => {
-    randomTimeTotalRef.current += randomTime();
     setTimeout(() => {
       setDivCharArr(divCharArr => [...divCharArr, char]);
-    }, randomTimeTotalRef.current);
+    }, (randomTimeTotalRef.current += randomTime()));
   }, []);
 
   const renderClosingDivSpan = useCallback(char => {
-    randomTimeTotalRef.current += randomTime();
     setTimeout(() => {
       setClosingDivCharArr(closingDivCharArr => [...closingDivCharArr, char]);
-    }, randomTimeTotalRef.current);
+    }, (randomTimeTotalRef.current += randomTime()));
   }, []);
 
   const renderContact = useCallback(() => {
-    randomTimeTotalRef.current += 250;
     setTimeout(() => {
       setShow(true);
-    }, randomTimeTotalRef.current);
+    }, (randomTimeTotalRef.current += 250));
   }, []);
 
   useEffect(() => {
