@@ -52,6 +52,33 @@ const App = () => {
     }, (randomTimeTotalRef.current += 6000));
   }, []);
 
+  const sparkle = useCallback(() => {
+    setTimeout(() => {
+      const charArr = document.querySelectorAll('.footer-name-char');
+      charArr.forEach(char => {
+        setTimeout(() => {
+          char.classList.add('sparkle');
+        }, (randomTimeTotalRef.current += 10));
+      });
+      charArr.forEach(char => {
+        setTimeout(() => {
+          char.classList.remove('sparkle');
+        }, (randomTimeTotalRef.current += 10));
+      });
+      randomTimeTotalRef.current += 250;
+      for (let i = charArr.length - 1; i >= 0; i--) {
+        setTimeout(() => {
+          charArr[i].classList.add('sparkle');
+        }, (randomTimeTotalRef.current += 10));
+      }
+      for (let j = charArr.length - 1; j >= 0; j--) {
+        setTimeout(() => {
+          charArr[j].classList.remove('sparkle');
+        }, (randomTimeTotalRef.current += 10));
+      }
+    }, (randomTimeTotalRef.current += 1500));
+  }, []);
+
   useEffect(() => {
     setTimeout(() => {
       renderChars(headingChars, setHeadingCharArr);
@@ -60,8 +87,9 @@ const App = () => {
       renderChars(closingDivChars, setClosingDivCharArr);
       renderContact();
       renderFooter();
+      sparkle();
     }, 1000);
-  }, [renderChars, renderContact, renderFooter]);
+  }, [renderChars, renderContact, renderFooter, sparkle]);
 
   return (
     <div className="App">
