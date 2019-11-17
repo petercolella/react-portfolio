@@ -53,31 +53,39 @@ const App = () => {
   }, []);
 
   const sparkle = useCallback(() => {
+    const charArr = document.querySelectorAll('.footer-name-char');
+    let timeout = 0;
+    charArr.forEach(char => {
+      setTimeout(() => {
+        char.classList.add('sparkle');
+      }, (timeout += 15));
+    });
+    charArr.forEach(char => {
+      setTimeout(() => {
+        char.classList.remove('sparkle');
+      }, (timeout += 15));
+    });
+    timeout += 500;
+    for (let i = charArr.length - 1; i >= 0; i--) {
+      setTimeout(() => {
+        charArr[i].classList.add('sparkle');
+      }, (timeout += 15));
+    }
+    for (let j = charArr.length - 1; j >= 0; j--) {
+      setTimeout(() => {
+        charArr[j].classList.remove('sparkle');
+      }, (timeout += 15));
+    }
     setTimeout(() => {
-      const charArr = document.querySelectorAll('.footer-name-char');
-      charArr.forEach(char => {
-        setTimeout(() => {
-          char.classList.add('sparkle');
-        }, (randomTimeTotalRef.current += 10));
-      });
-      charArr.forEach(char => {
-        setTimeout(() => {
-          char.classList.remove('sparkle');
-        }, (randomTimeTotalRef.current += 10));
-      });
-      randomTimeTotalRef.current += 250;
-      for (let i = charArr.length - 1; i >= 0; i--) {
-        setTimeout(() => {
-          charArr[i].classList.add('sparkle');
-        }, (randomTimeTotalRef.current += 10));
-      }
-      for (let j = charArr.length - 1; j >= 0; j--) {
-        setTimeout(() => {
-          charArr[j].classList.remove('sparkle');
-        }, (randomTimeTotalRef.current += 10));
-      }
-    }, (randomTimeTotalRef.current += 1500));
+      sparkle();
+    }, 3000);
   }, []);
+
+  const startSparkle = useCallback(() => {
+    setTimeout(() => {
+      sparkle();
+    }, (randomTimeTotalRef.current += 2000));
+  }, [sparkle]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -87,9 +95,9 @@ const App = () => {
       renderChars(closingDivChars, setClosingDivCharArr);
       renderContact();
       renderFooter();
-      sparkle();
+      startSparkle();
     }, 1000);
-  }, [renderChars, renderContact, renderFooter, sparkle]);
+  }, [renderChars, renderContact, renderFooter, startSparkle]);
 
   return (
     <div className="App">
