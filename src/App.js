@@ -27,6 +27,8 @@ const App = () => {
   const [show, setShow] = useState(false);
   const [showFooter, setShowFooter] = useState(false);
 
+  const charRef = useRef();
+
   const randomTimeTotalRef = useRef();
   randomTimeTotalRef.current = 0;
 
@@ -53,7 +55,7 @@ const App = () => {
   }, []);
 
   const sparkle = useCallback(() => {
-    const charArr = document.querySelectorAll('.footer-name-char');
+    const charArr = charRef.current.childNodes;
     let timeout = 0;
     charArr.forEach(char => {
       setTimeout(() => {
@@ -108,7 +110,7 @@ const App = () => {
         closingCharArr={closingDivCharArr}
         show={show}
       />
-      <Footer show={showFooter} />
+      <Footer ref={charRef} show={showFooter} />
     </div>
   );
 };
