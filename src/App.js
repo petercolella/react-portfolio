@@ -57,30 +57,27 @@ const App = () => {
   const sparkle = useCallback(() => {
     const charArr = charRef.current.childNodes;
     let timeout = 0;
-    charArr.forEach(char => {
-      setTimeout(() => {
-        char.classList.add('sparkle');
-      }, (timeout += 15));
-    });
-    charArr.forEach(char => {
-      setTimeout(() => {
-        char.classList.remove('sparkle');
-      }, (timeout += 15));
-    });
+
+    const loop = (forwardBoolean, addBoolean, speed) => {
+      const arr = forwardBoolean ? charArr : [...charArr].reverse();
+      arr.forEach(char => {
+        setTimeout(() => {
+          addBoolean
+            ? char.classList.add('sparkle')
+            : char.classList.remove('sparkle');
+        }, (timeout += speed));
+      });
+    };
+
+    loop(true, true, 10);
+    loop(true, false, 10);
     timeout += 500;
-    for (let i = charArr.length - 1; i >= 0; i--) {
-      setTimeout(() => {
-        charArr[i].classList.add('sparkle');
-      }, (timeout += 15));
-    }
-    for (let j = charArr.length - 1; j >= 0; j--) {
-      setTimeout(() => {
-        charArr[j].classList.remove('sparkle');
-      }, (timeout += 15));
-    }
+    loop(false, true, 10);
+    loop(false, false, 10);
+
     setTimeout(() => {
       sparkle();
-    }, 3000);
+    }, 6000);
   }, []);
 
   const startSparkle = useCallback(() => {
