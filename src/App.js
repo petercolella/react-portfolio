@@ -62,7 +62,7 @@ const App = () => {
       const arr = forwardBoolean ? charArr : [...charArr].reverse();
 
       const styleArr = [];
-      const shadowPx = 0.5;
+      const shadowPx = 2;
       const shadowIncrement = (shadowPx / arr.length) * shadowPx * 2;
 
       let hShadow = forwardBoolean ? shadowPx : -shadowPx;
@@ -101,21 +101,25 @@ const App = () => {
       });
     };
 
-    loop(true, true, 10);
-    loop(true, false, 10);
-    timeout += 500;
-    loop(false, true, 10);
-    loop(false, false, 10);
+    const speedIncrement = 20;
+
+    loop(true, true, speedIncrement);
+    timeout -= (charArr.length - 2) * speedIncrement;
+    loop(true, false, speedIncrement);
+    timeout += 100;
+    loop(false, true, speedIncrement);
+    timeout -= (charArr.length - 2) * speedIncrement;
+    loop(false, false, speedIncrement);
 
     setTimeout(() => {
       sparkle();
-    }, 6000);
+    }, 4000);
   }, []);
 
   const startSparkle = useCallback(() => {
     setTimeout(() => {
       sparkle();
-    }, (randomTimeTotalRef.current += 2000));
+    }, (randomTimeTotalRef.current += 1750));
   }, [sparkle]);
 
   useEffect(() => {
