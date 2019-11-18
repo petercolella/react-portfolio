@@ -62,7 +62,7 @@ const App = () => {
       const arr = forwardBoolean ? charArr : [...charArr].reverse();
 
       const styleArr = [];
-      const shadowPx = 1;
+      const shadowPx = 0.5;
       const shadowIncrement = (shadowPx / arr.length) * shadowPx * 2;
 
       let hShadow = forwardBoolean ? shadowPx : -shadowPx;
@@ -81,7 +81,8 @@ const App = () => {
 
         // `);
 
-        const style = `text-shadow: ${hShadow}px ${vShadow}px ${shadowPx}px #c4dce5`;
+        const style = `text-shadow: ${hShadow}px ${vShadow}px ${shadowPx *
+          2}px #c4dce5`;
         styleArr.push(style);
 
         setTimeout(() => {
