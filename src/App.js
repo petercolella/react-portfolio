@@ -60,12 +60,43 @@ const App = () => {
 
     const loop = (forwardBoolean, addBoolean, speed) => {
       const arr = forwardBoolean ? charArr : [...charArr].reverse();
-      arr.forEach(char => {
+
+      const styleArr = [];
+      const shadowPx = 1;
+      const shadowIncrement = (shadowPx / arr.length) * shadowPx * 2;
+
+      let hShadow = forwardBoolean ? shadowPx : -shadowPx;
+      let vShadow = !forwardBoolean ? shadowPx : -shadowPx;
+
+      arr.forEach((char, i) => {
+        const pastHalfway = i + 1 <= arr.length / 2 ? 1 : -1;
+
+        // console.log(`
+        // forwardBoolean: ${forwardBoolean}
+        // addBoolean: ${addBoolean}
+        // i: ${i}
+        // pastHalfway: ${pastHalfway}
+        // ${hShadow}
+        // ${vShadow}
+
+        // `);
+
+        const style = `text-shadow: ${hShadow}px ${vShadow}px ${shadowPx}px #c4dce5`;
+        styleArr.push(style);
+
         setTimeout(() => {
           addBoolean
             ? char.classList.add('sparkle')
             : char.classList.remove('sparkle');
+          addBoolean
+            ? char.setAttribute('style', `${styleArr[i]}`)
+            : char.setAttribute('style', null);
         }, (timeout += speed));
+
+        hShadow -=
+          pastHalfway * (forwardBoolean ? shadowIncrement : -shadowIncrement);
+        vShadow -=
+          pastHalfway * (!forwardBoolean ? shadowIncrement : -shadowIncrement);
       });
     };
 
