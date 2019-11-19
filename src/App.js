@@ -62,11 +62,12 @@ const App = () => {
       const arr = forwardBoolean ? charArr : [...charArr].reverse();
 
       const styleArr = [];
-      const shadowPx = 2;
-      const shadowIncrement = (shadowPx / arr.length) * shadowPx * 2;
+      const shadowPx = 1;
+      const shadowIncrement = (shadowPx / arr.length) * 2;
 
-      let hShadow = forwardBoolean ? shadowPx : -shadowPx;
-      let vShadow = !forwardBoolean ? shadowPx : -shadowPx;
+      let hShadow = forwardBoolean ? -shadowPx : shadowPx;
+      let vShadowTop = 0;
+      let vShadowBottom = 0;
 
       arr.forEach((char, i) => {
         const pastHalfway = i + 1 <= arr.length / 2 ? 1 : -1;
@@ -76,13 +77,13 @@ const App = () => {
         // addBoolean: ${addBoolean}
         // i: ${i}
         // pastHalfway: ${pastHalfway}
-        // ${hShadow}
-        // ${vShadow}
+        // top: ${-hShadow} ${vShadowTop}
+        // bottom: ${hShadow} ${vShadowBottom}
 
         // `);
 
-        const style = `text-shadow: ${hShadow}px ${vShadow}px ${shadowPx *
-          2}px #c4dce5`;
+        const style = `text-shadow: ${-hShadow}px ${vShadowTop}px ${shadowPx *
+          4}px #fff, ${hShadow}px ${vShadowBottom}px ${shadowPx * 4}px #fff`;
         styleArr.push(style);
 
         setTimeout(() => {
@@ -94,14 +95,12 @@ const App = () => {
             : char.setAttribute('style', null);
         }, (timeout += speed));
 
-        hShadow -=
-          pastHalfway * (forwardBoolean ? shadowIncrement : -shadowIncrement);
-        vShadow -=
-          pastHalfway * (!forwardBoolean ? shadowIncrement : -shadowIncrement);
+        vShadowTop -= pastHalfway * shadowIncrement;
+        vShadowBottom += pastHalfway * shadowIncrement;
       });
     };
 
-    const speedIncrement = 20;
+    const speedIncrement = 25;
 
     loop(true, true, speedIncrement);
     timeout -= (charArr.length - 2) * speedIncrement;
