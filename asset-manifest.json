@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.87e7b1ab.chunk.css",
-    "main.js": "/react-portfolio/static/js/main.a6989494.chunk.js",
-    "main.js.map": "/react-portfolio/static/js/main.a6989494.chunk.js.map",
-    "runtime~main.js": "/react-portfolio/static/js/runtime~main.f974a8eb.js",
-    "runtime~main.js.map": "/react-portfolio/static/js/runtime~main.f974a8eb.js.map",
-    "static/js/2.d2ed693d.chunk.js": "/react-portfolio/static/js/2.d2ed693d.chunk.js",
-    "static/js/2.d2ed693d.chunk.js.map": "/react-portfolio/static/js/2.d2ed693d.chunk.js.map",
-    "index.html": "/react-portfolio/index.html",
-    "precache-manifest.d07fe63173981f20cc8672a7217097ae.js": "/react-portfolio/precache-manifest.d07fe63173981f20cc8672a7217097ae.js",
-    "service-worker.js": "/react-portfolio/service-worker.js",
-    "static/css/main.87e7b1ab.chunk.css.map": "/react-portfolio/static/css/main.87e7b1ab.chunk.css.map",
-    "static/media/github.ddc25012.svg": "/react-portfolio/static/media/github.ddc25012.svg",
-    "static/media/gmail.5842dc8d.svg": "/react-portfolio/static/media/gmail.5842dc8d.svg",
-    "static/media/linkedin.4b475fb3.svg": "/react-portfolio/static/media/linkedin.4b475fb3.svg"
+    "main.css": "/static/css/main.87e7b1ab.chunk.css",
+    "main.js": "/static/js/main.008c86ff.chunk.js",
+    "main.js.map": "/static/js/main.008c86ff.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.d2ed693d.chunk.js": "/static/js/2.d2ed693d.chunk.js",
+    "static/js/2.d2ed693d.chunk.js.map": "/static/js/2.d2ed693d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.4915c668a85c6a511a0a0855c29bfa1b.js": "/precache-manifest.4915c668a85c6a511a0a0855c29bfa1b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.87e7b1ab.chunk.css.map": "/static/css/main.87e7b1ab.chunk.css.map",
+    "static/media/github.ddc25012.svg": "/static/media/github.ddc25012.svg",
+    "static/media/gmail.5842dc8d.svg": "/static/media/gmail.5842dc8d.svg",
+    "static/media/linkedin.4b475fb3.svg": "/static/media/linkedin.4b475fb3.svg"
   }
 }
