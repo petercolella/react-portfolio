@@ -19,6 +19,23 @@ const randomTime = () => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+const loopOptions = {
+  shadowPx: 2,
+  blurRadius: 4,
+  shadowColorBottom: '#fff',
+  shadowColorTop: '#fff',
+  textColor: '#f8f8f2',
+  vShadowBottom: 0,
+  vShadowTop: 0
+};
+
+const sparkleOptions = {
+  charOffset: 2,
+  speedIncrement: 25,
+  timeBetweenDirectionChg: 100,
+  timeBetweenSparkles: 4000
+};
+
 const App = () => {
   const [headingCharArr, setHeadingCharArr] = useState([]);
   const [paragraphCharArr, setParagraphCharArr] = useState([]);
@@ -60,14 +77,20 @@ const App = () => {
 
     const loop = (forwardBoolean, addBoolean, speed) => {
       const arr = forwardBoolean ? charArr : [...charArr].reverse();
+      const {
+        shadowPx,
+        blurRadius,
+        shadowColorBottom,
+        shadowColorTop,
+        textColor
+      } = loopOptions;
 
-      const styleArr = [];
-      const shadowPx = 1;
+      let { vShadowBottom, vShadowTop } = loopOptions;
+
+      const hShadow = forwardBoolean ? -shadowPx : shadowPx;
       const shadowIncrement = (shadowPx / arr.length) * 2;
 
-      let hShadow = forwardBoolean ? -shadowPx : shadowPx;
-      let vShadowTop = 0;
-      let vShadowBottom = 0;
+      const styleArr = [];
 
       arr.forEach((char, i) => {
         const pastHalfway = i + 1 <= arr.length / 2 ? 1 : -1;
@@ -82,17 +105,13 @@ const App = () => {
 
         // `);
 
-        const style = `text-shadow: ${-hShadow}px ${vShadowTop}px ${shadowPx *
-          4}px #fff, ${hShadow}px ${vShadowBottom}px ${shadowPx * 4}px #fff`;
+        const style = `text-shadow: ${-hShadow}px ${vShadowTop}px ${blurRadius}px ${shadowColorTop}, ${hShadow}px ${vShadowBottom}px ${blurRadius}px ${shadowColorBottom}; color: ${textColor}`;
         styleArr.push(style);
 
         setTimeout(() => {
           addBoolean
-            ? char.classList.add('sparkle')
-            : char.classList.remove('sparkle');
-          addBoolean
             ? char.setAttribute('style', `${styleArr[i]}`)
-            : char.setAttribute('style', null);
+            : char.removeAttribute('style');
         }, (timeout += speed));
 
         vShadowTop -= pastHalfway * shadowIncrement;
@@ -100,19 +119,29 @@ const App = () => {
       });
     };
 
-    const speedIncrement = 25;
+    const { speedIncrement, timeBetweenDirectionChg } = sparkleOptions;
+    let { charOffset, timeBetweenSparkles } = sparkleOptions;
+
+    if (charOffset > charArr.length) charOffset = charArr.length;
+
+    const minimumTimeBetweenSparkles =
+      (charArr.length + charOffset) * speedIncrement * 2 +
+      timeBetweenDirectionChg;
+
+    if (timeBetweenSparkles < minimumTimeBetweenSparkles)
+      timeBetweenSparkles = minimumTimeBetweenSparkles;
 
     loop(true, true, speedIncrement);
-    timeout -= (charArr.length - 2) * speedIncrement;
+    timeout -= (charArr.length - charOffset) * speedIncrement;
     loop(true, false, speedIncrement);
-    timeout += 100;
+    timeout += timeBetweenDirectionChg;
     loop(false, true, speedIncrement);
-    timeout -= (charArr.length - 2) * speedIncrement;
+    timeout -= (charArr.length - charOffset) * speedIncrement;
     loop(false, false, speedIncrement);
 
     setTimeout(() => {
       sparkle();
-    }, 4000);
+    }, timeBetweenSparkles);
   }, []);
 
   const startSparkle = useCallback(() => {
