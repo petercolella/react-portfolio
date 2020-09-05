@@ -16,20 +16,26 @@ const Contact = props => {
       <div className={!show ? 'contact' : 'contact show'}>
         <a
           href="https://github.com/petercolella"
+          aria-label="GitHub"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           <GitHub className={!show ? 'svg' : 'svg grow'} id="github" />
         </a>
         <a
           href="mailto:colella.peter.j@gmail.com"
+          aria-label="Gmail"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           <Gmail className={!show ? 'svg' : 'svg grow'} id="gmail" />
         </a>
         <a
           href="https://www.linkedin.com/in/peter-colella/"
+          aria-label="LinkedIn"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           <LinkedIn className={!show ? 'svg' : 'svg grow'} id="linkedin" />
         </a>
       </div>
