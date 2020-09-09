@@ -1,16 +1,14 @@
 import React from 'react';
 import './style.css';
 
-const Paragraph = ({ charArr }) => {
+export default ({ charArr }) => {
   return (
     <p id="what">
-      {charArr.map(char => (
-        <span key={char.key} style={{ color: char.color }}>
-          {char.char}
+      {charArr.map(({ char, color, key }) => (
+        <span key={key} style={{ color }}>
+          {char}
         </span>
       ))}
     </p>
   );
 };
-
-export default Paragraph;

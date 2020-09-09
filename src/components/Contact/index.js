@@ -4,12 +4,12 @@ import { ReactComponent as Gmail } from './gmail.svg';
 import { ReactComponent as LinkedIn } from './linkedin.svg';
 import './styles.css';
 
-const Contact = ({ charArr, closingCharArr, show }) => {
+export default ({ charArr, closingCharArr, show }) => {
   return (
     <div id="where">
-      {charArr.map(char => (
-        <span key={char.key} style={{ color: char.color }}>
-          {char.char}
+      {charArr.map(({ char, color, key }) => (
+        <span key={key} style={{ color }}>
+          {char}
         </span>
       ))}
       <div className={!show ? 'contact' : 'contact show'}>
@@ -38,13 +38,11 @@ const Contact = ({ charArr, closingCharArr, show }) => {
           <LinkedIn className={!show ? 'svg' : 'svg grow'} id="linkedin" />
         </a>
       </div>
-      {closingCharArr.map(char => (
-        <span key={char.key} style={{ color: char.color }}>
-          {char.char}
+      {closingCharArr.map(({ char, color, key }) => (
+        <span key={key} style={{ color }}>
+          {char}
         </span>
       ))}
     </div>
   );
 };
-
-export default Contact;

@@ -1,16 +1,14 @@
 import React from 'react';
 import './style.css';
 
-const Heading = ({ charArr }) => {
+export default ({ charArr }) => {
   return (
     <h1 id="who">
-      {charArr.map(char => (
-        <span key={char.key} style={{ color: char.color }}>
-          {char.char}
+      {charArr.map(({ char, color, key }) => (
+        <span key={key} style={{ color }}>
+          {char}
         </span>
       ))}
     </h1>
   );
 };
-
-export default Heading;

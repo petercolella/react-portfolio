@@ -2,10 +2,9 @@ import React, { forwardRef } from 'react';
 import './style.css';
 
 const year = new Date().getFullYear();
-const footerText = `\u00A9${year} Peter Colella`;
-const footerTextArr = footerText.split('');
+const footerTextArr = `\u00A9${year} Peter Colella`.split('');
 
-const Footer = forwardRef(({ show }, ref) => {
+export default forwardRef(({ show }, ref) => {
   return (
     <div className={!show ? 'footer' : 'footer show'}>
       <p className={!show ? 'footer-text' : 'footer-text visible'} ref={ref}>
@@ -16,5 +15,3 @@ const Footer = forwardRef(({ show }, ref) => {
     </div>
   );
 });
-
-export default Footer;
