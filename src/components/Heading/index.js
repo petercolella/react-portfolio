@@ -1,9 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const Heading = props => {
-  const { charArr } = props;
-
+const Heading = ({ charArr }) => {
   return (
     <h1 id="who">
       {charArr.map(char => (

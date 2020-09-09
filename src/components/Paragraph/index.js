@@ -1,9 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const Paragraph = props => {
-  const { charArr } = props;
-
+const Paragraph = ({ charArr }) => {
   return (
     <p id="what">
       {charArr.map(char => (

@@ -4,8 +4,7 @@ import { ReactComponent as Gmail } from './gmail.svg';
 import { ReactComponent as LinkedIn } from './linkedin.svg';
 import './styles.css';
 
-const Contact = props => {
-  const { charArr, closingCharArr, show } = props;
+const Contact = ({ charArr, closingCharArr, show }) => {
   return (
     <div id="where">
       {charArr.map(char => (
